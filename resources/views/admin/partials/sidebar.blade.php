@@ -56,16 +56,13 @@
                         <ul class="nav nav-group-sub" data-submenu-title="Content styling">
                             <li class="nav-item"><a  href="{{"/dashboard/settings/general"}}" class="nav-link @if(Request::segment(3) == ('general'))active @endif"><span>General</span></a></li>
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><span>Themes</span></a>
+                                <a href="#" class="nav-link"><span>Theme Settings</span></a>
                                 <ul class="nav nav-group-sub" data-submenu-title="Content styling">
                                     <li class="nav-item"><a  href="{{"/dashboard/settings/theme-header"}}" class="nav-link @if(Request::segment(3) == ('theme-header'))active @endif"><span>Header</span></a></li>
-                                    <li class="nav-item"><a  href="{{"/dashboard/settings/theme-header"}}" class="nav-link @if(Request::segment(3) == ('theme-header'))active @endif"><span>View</span></a></li>
                                     <li class="nav-item"><a  href="{{"/dashboard/settings/theme-footer"}}" class="nav-link @if(Request::segment(3) == ('theme-footer'))active @endif"><span>Footer</span></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a  href="{{"/dashboard/settings/languages"}}" class="nav-link @if(Request::segment(3) == ('languages'))active @endif"><span>Language</span></a></li>
-                            <li class="nav-item"><a  href="{{"/dashboard/settings/currency"}}" class="nav-link @if(Request::segment(3) == ('currency'))active @endif"><span>Currency</span></a></li>
-                            <li class="nav-item"><a  href="{{"/dashboard/settings/payment-method"}}" class="nav-link @if(Request::segment(3) == ('payment-method'))active @endif"><span>Payment Method</span></a></li>
                             <li class="nav-item"><a  href="{{"/dashboard/settings/smtp"}}" class="nav-link @if(Request::segment(3) == ('smtp'))active @endif"><span>SMTP</span></a></li>
                             <li class="nav-item"><a  href="{{"/dashboard/settings/facebook"}}" class="nav-link @if(Request::segment(3) == ('facebook'))active @endif"><span>Facebook</span></a></li>
                             <li class="nav-item"><a  href="{{"/dashboard/settings/google"}}" class="nav-link @if(Request::segment(3) == ('google'))active @endif"><span>Google</span></a></li>

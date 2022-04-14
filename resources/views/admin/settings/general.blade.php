@@ -30,20 +30,15 @@
                             <form class="forms-sample" action="{{route('setting.update')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Title</label>
                                             <input value="{{_settings('title')}}" type="text" class="form-control" id="exampleInputName1" placeholder="Title"  name="setting[title]" >
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label >Keyword</label>
-                                            <input value="{{_settings('keyword')}}" type="text" class="form-control" id="exampleInputName1" placeholder="Keyword"  name="setting[keyword]" >
-                                        </div>
-                                    </div>
                                    <div class="col-md-12">
                                        <div class="form-group">
+                                           <label>Description</label>
                                            <textarea name="setting[description]" cols="30" rows="10" class="form-control">{{_settings('description')}}</textarea>
                                        </div>
                                    </div>
@@ -65,7 +60,16 @@
                                         </div>
                                        @if(_settings('logo'))
                                             <img class="ml-3 rounded" src="{{url('storage/'._settings('logo'))}}" style="max-width: 350px; max-height: 300px;">
-                                        @endif
+                                       @endif
+                                    </div>
+                                    <div class="col-md-12">
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="custom-control custom-control-right custom-switch text-left mb-2">
+                                            <input name="setting[language]" type="checkbox" class="custom-control-input" id="sc_rs_c" @if(_settings('language')==true) checked @endif>
+                                            <label class="custom-control-label" for="sc_rs_c">Show Language Switcher?</label>
+                                        </div>
                                     </div>
                                     <div class="col-md-12">
                                         <hr>
@@ -88,19 +92,20 @@
                             <form class="forms-sample" action="{{route('setting.update')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Meta Title</label>
                                             <input value="{{_settings('meta_title')}}" type="text" class="form-control" id="exampleInputName1" placeholder="Meta Title"  name="setting[meta_title]" >
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Meta Keyword</label>
                                             <input value="{{_settings('meta_keyword')}}" type="text" class="form-control" id="exampleInputName1" placeholder="Meta Keyword"  name="setting[meta_keyword]" >
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <label>Description</label>
                                         <div class="form-group">
                                             <textarea name="setting[meta_description]" cols="30" rows="10" class="form-control">{{_settings('meta_description')}}</textarea>
                                         </div>

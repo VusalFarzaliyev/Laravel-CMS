@@ -9,7 +9,7 @@ class SettingLanguage extends Model
 {
     protected $table = 'setting_languages';
     protected $fillable = [
-        'name','code'
+        'name','code','status'
     ];
     use HasFactory;
 }

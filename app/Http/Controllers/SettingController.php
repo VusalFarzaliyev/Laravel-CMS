@@ -17,16 +17,16 @@ class SettingController extends Controller
     {
         $request->validate([
            'setting[logo]'=>'file|image',
-            'setting[img]'=>'file|image',
+           'setting[img]'=>'file|image',
         ]);
         $request  = $request->all();
+        $request['setting']['language'] = isset($request['setting']['language']) ? 1 : 0;
         if(isset($request['setting']['logo'])){
             if(file_exists('storage/'._settings('logo')))
             {
                 File::delete('/storage/'._settings('logo'));
             }
             $request['setting']['logo'] = _setFileName($request['setting']['logo'],'settings')->getData()->name;
-
         }
         if(isset($request['setting']['img'])){
             if(file_exists('storage/'._settings('img')))
@@ -34,7 +34,6 @@ class SettingController extends Controller
                 File::delete('/storage/'._settings('img'));
             }
             $request['setting']['img'] = _setFileName($request['setting']['img'],'settings')->getData()->name;
-
         }
         if(isset($request['setting']['favicon'])){
             if(file_exists('storage/'._settings('favicon')))

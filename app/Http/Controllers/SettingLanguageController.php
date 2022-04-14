@@ -12,7 +12,7 @@ class SettingLanguageController extends Controller
 {
     public function index()
     {
-        $languages = SettingLanguage::orderBy('name','ASC')->paginate(5);
+        $languages = SettingLanguage::orderBy('id','ASC')->paginate(5);
         return view('admin.settings.language',compact('languages'),['layout'=>'index']);
     }
     public function create(LanguageRequest $request)
@@ -24,11 +24,12 @@ class SettingLanguageController extends Controller
     public function edit($id)
     {
         $language  = SettingLanguage::find($id);
-        $languages = SettingLanguage::orderBy('name','ASC')->paginate(5);
+        $languages = SettingLanguage::orderBy('id','ASC')->paginate(5);
         return view('admin.settings.language',compact('language','languages'),['layout'=>'edit']);
     }
     public function update(LanguageUpdateRequest $request,$id)
     {
+//        dd($request->validated());
         $language  = SettingLanguage::find($id);
         $language->update($request->validated());
         return redirect()->route('setting.language.index')->with('success','Language Updated Successfuly');

@@ -66,6 +66,15 @@
                                         @error('code')<span class="text-danger">{{$message}}</span>@enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">Status </label>
+                                    <div class="col-lg-10">
+                                        <div class="custom-control custom-switch custom-switch-square custom-control-danger">
+                                            <input name="status" type="checkbox" class="custom-control-input" id="sc_s_secondary.{{$language->code}}" @if($language->status ==  true) checked @endif >
+                                            <label class="custom-control-label" for="sc_s_secondary.{{$language->code}}"></label>
+                                        </div>
+                                    </div>
+                                </div>
                                <div class="form-group">
                                    <button type="submit" class="btn btn-info float-right">Update Language</button>
                                </div>
@@ -73,7 +82,7 @@
                         </div>
                     @endif
                     <div class="col-xl-7">
-                        @if(count($languages) > 0)
+                        @if(count($languages)>0)
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -81,7 +90,8 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Code</th>
-                                        <th>Operations</th>
+                                        <th>Status</th>
+                                        <th>Edit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -91,13 +101,23 @@
                                                 <td>{{$language->name}}</td>
                                                 <td>{{$language->code}}</td>
                                                 <td>
+                                                   @if($language->status == 1)
+                                                       Active
+                                                   @else
+                                                       De-active
+                                                   @endif
+
+                                                </td>
+                                                <td>
                                                     <a href="{{route('setting.language.edit',$language->id)}}" class="btn btn-primary"><i class="icon-pencil"></i></a>
-                                                    <a href="" class="btn btn-danger"><i class="icon-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="ml-5 mt-2">
+                                <span >{{$languages->links()}}</span>
                             </div>
                         @else
                         <div class="alert alert-danger mt-5 text-center">
