@@ -17,10 +17,4 @@
             </div>
         </div>
     </div>
-<script src="/assets/admin/auth/js/main.js"></script>
-  @if(session('success'))
-  <script>
-  setTimeout(function() { alert("{{session('success')}}"); }, 100);
-  </script>
-           @endif
 @endsection
