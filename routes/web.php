@@ -15,6 +15,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\SettingFacebookController;
 use App\Http\Controllers\SMTPController;
 use App\Http\Controllers\SettingGoogleController;
+use App\Http\Controllers\SettingLanguageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -120,6 +121,13 @@ Route::group(['middleware'=>'notLogin'],function () {
             Route::group(['prefix'=>'/smtp','as'=>'smtp.'],function (){
                 Route::get('/',[SMTPController::class,'index'])->name('index');
                 Route::post('/update/{id}',[SMTPController::class,'update'])->name('update');
+            });
+            Route::group(['prefix'=>'/languages','as'=>'language.'],function ()
+            {
+                Route::get('/',[SettingLanguageController::class,'index'])->name('index');
+                Route::post('/create',[SettingLanguageController::class,'create'])->name('create');
+                Route::get('/edit/{id}',[SettingLanguageController::class,'edit'])->name('edit');
+                Route::post('/update/{id}',[SettingLanguageController::class,'update'])->name('update');
             });
         });
     });

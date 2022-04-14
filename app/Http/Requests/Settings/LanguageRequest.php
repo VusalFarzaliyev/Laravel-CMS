@@ -13,7 +13,7 @@ class LanguageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class LanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|max:50|min:3',
+            'code'=>'required|max:3|unique:setting_languages',
         ];
     }
 }
