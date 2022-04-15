@@ -16,6 +16,7 @@ use App\Http\Controllers\SettingFacebookController;
 use App\Http\Controllers\SMTPController;
 use App\Http\Controllers\SettingGoogleController;
 use App\Http\Controllers\SettingLanguageController;
+use App\Http\Controllers\SettingThemeLinkController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -110,6 +111,10 @@ Route::group(['middleware'=>'notLogin'],function () {
         {
             Route::get('/general',[SettingController::class,'index'])->name('index');
             Route::post('/general',[SettingController::class,'update'])->name('update');
+            Route::get('/theme-links',[SettingThemeLinkController::class,'index'])->name('theme-index');
+            Route::post('/theme-header',[SettingThemeLinkController::class,'headerCreate'])->name('theme-link-header');
+            Route::post('/theme-footer',[SettingThemeLinkController::class,'footerCreate'])->name('theme-link-footer');
+            Route::get('/theme-link-delete/{id}',[SettingThemeLinkController::class,'delete'])->name('theme-link-delete');
             Route::group(['prefix'=>'/facebook','as'=>'facebook.'],function (){
                 Route::get('/',[SettingFacebookController::class,'index'])->name('index');
                 Route::post('/update/{id}',[SettingFacebookController::class,'update'])->name('update');

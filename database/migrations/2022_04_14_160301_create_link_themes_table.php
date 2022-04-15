@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('setting_themes', function (Blueprint $table) {
+        Schema::create('setting_link_themes', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->nullable();
-            $table->text('value')->nullable();
+            $table->string('page')->nullable();
+            $table->text('slug')->nullable();
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setting_themes');
+        Schema::dropIfExists('setting_link_themes');
     }
 };

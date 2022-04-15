@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SettingTheme extends Model
+class SettingThemeLink extends Model
 {
-    protected $table = 'setting_themes';
-    protected $fillable =['key','value'];
+    protected $table = 'setting_link_themes';
+    protected $fillable = ['page','slug','type'];
     use HasFactory;
 }
