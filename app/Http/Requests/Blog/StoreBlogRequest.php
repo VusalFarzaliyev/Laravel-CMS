@@ -35,7 +35,7 @@ class StoreBlogRequest extends FormRequest
             'seo_keyword'=>['nullable'],
             'seo_description'=>['nullable'],
             'image'=>['required'],
-            'images'=>['required'],
+            'images'=>['nullable'],
 
         ];
     }

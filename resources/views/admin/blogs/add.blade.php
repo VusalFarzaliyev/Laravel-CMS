@@ -21,7 +21,7 @@
                     </button>
                 </div>
             @endif
-            <div class="col-xl-12">
+            <div class="col-xl-10 mx-auto">
                 <div class="card">
                     <div class="card-body">
                         <form class="form-validate-jquery" method="post" action="{{route('blog.create')}}" enctype="multipart/form-data">
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-lg-2">Multiple Images <span class="text-danger">*</span></label>
+                                    <label class="col-form-label col-lg-2">Galery</label>
                                     <div class="col-lg-10">
                                         <input type="file" name="images[]" class="custom-file-input" style="height: 44px !important;" multiple>
                                         <span class="custom-file-label">Choose File </span>

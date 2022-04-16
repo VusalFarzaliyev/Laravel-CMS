@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -56,7 +57,8 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if($category)
         {
-            $category->blogs()->delete();
+//            $category->blogs()->delete();
+            Blog::where('category_id',$category->id)->delete();
             $category->delete();
         }
         return redirect('/dashboard/categories')->with('danger', 'Category Deleted with its Posts Successfuly!');

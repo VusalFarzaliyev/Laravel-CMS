@@ -40,7 +40,7 @@ class BlogController extends Controller
             $request['image'] = 'blogs/'.$fileName;
         }
         $blog    = Blog::create($request);
-        if($request['images'])
+        if(isset($request['images']))
         {
             foreach ($request['images'] as $file)
             {
