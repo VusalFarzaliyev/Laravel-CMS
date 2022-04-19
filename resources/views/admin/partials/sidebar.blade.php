@@ -48,7 +48,7 @@
                             @can('read-categories')
                                 <li class="nav-item"><a  href="{{"/dashboard/categories"}}" class="nav-link @if(Request::segment(2) == ('categories'))active @endif"><span>Categories</span></a></li>
                             @endcan
-{{--                            <li class="nav-item"><a  href="{{"/dashboard/tags"}}" class="nav-link @if(Request::segment(2) == ('tags'))active @endif"><span>Tags</span></a></li>--}}
+                            <li class="nav-item"><a  href="{{"/dashboard/tags"}}" class="nav-link @if(Request::segment(2) == ('tags'))active @endif"><span>Tags</span></a></li>
                         </ul>
                     </li>
                     <li class="nav-item nav-item-submenu">

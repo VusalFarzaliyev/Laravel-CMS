@@ -23,22 +23,7 @@
                                 </button>
                             </div>
                         @endif
-                        @if (session('danger'))
-                            <div class="alert alert-danger text-center col-md-10 mx-auto">
-                                {{ session('danger') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @endif
-                        <div class="float-left">
-                            <a href="{{'/dashboard/blogs/add'}}" class="btn btn-warning ml-3"><i class="icon-add"></i> Add New Post</a>
-                        </div>
-                        <div class="float-right mr-5">
-                            <span >{{$blogs->links()}}</span>
-                        </div>
                         <div class="table-responsive pt-3">
-                            @if(count($blogs) > 0)
                                 <table class="table table-bordered">
                                     <thead class="text-center">
                                     <tr>
@@ -63,22 +48,23 @@
                                     </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                    @foreach($blogs as $blog)
+                                    @foreach($tags as  $tag)
+{{--                                        @dd($tag->post->title)--}}
                                         <tr>
-                                            <td>{{$blog->title}}</td>
+                                            <td>{{$tag->post->title}}</td>
                                             <td>
-                                                <img src="{{asset('storage/'.$blog->image)}}" style="width: 200px; height: 100px;" class="rounded-3">
+                                                <img src="{{asset('storage/'.$tag->post->image)}}" style="width: 200px; height: 100px;" class="rounded-3">
                                             </td>
-                                            <td>{{$blog->category->name}}</td>
+                                            <td>{{$tag->post->category->name}}</td>
                                             <td>
-                                                @if($blog->status == 1)
+                                                @if($tag->post->status == 1)
                                                     Active
-                                                @elseif($blog->status == 0)
+                                                @elseif($tag->post->status == 0)
                                                     Deactive
                                                 @endif
                                             </td>
                                             <td>
-                                                {{$blog->user->username}}
+                                                {{$tag->post->user->username}}
                                             </td>
                                             <td class="text-center">
                                                 <div class="list-icons">
@@ -87,9 +73,9 @@
                                                             <i class="icon-menu9"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a href="{{'/dashboard/blogs/edit/'.$blog->id}}" class="dropdown-item text-primary"><i style="font-size: 25px" class="icon-pencil7"></i>Edit Post</a>
-                                                            <a href="{{'/dashboard/blogs/delete/'.$blog->id}}" class="dropdown-item text-danger" onclick="return confirm('Are you sure want to delete this blog?')"><i style="font-size: 25px" class="icon-trash"></i>Delete Post</a>
-                                                            <a href="{{'/dashboard/blogs/galery/'.$blog->id}}" class="dropdown-item text-info"><i style="font-size: 25px" class="icon-image3"></i>Post Galery</a>
+                                                            <a href="{{'/dashboard/blogs/edit/'.$tag->post->id}}" class="dropdown-item text-primary"><i style="font-size: 25px" class="icon-pencil7"></i>Edit Post</a>
+                                                            <a href="{{'/dashboard/blogs/delete/'.$tag->post->id}}" class="dropdown-item text-danger" onclick="return confirm('Are you sure want to delete this blog?')"><i style="font-size: 25px" class="icon-trash"></i>Delete Post</a>
+                                                            <a href="{{'/dashboard/blogs/galery/'.$tag->post->id}}" class="dropdown-item text-info"><i style="font-size: 25px" class="icon-image3"></i>Post Galery</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -98,13 +84,6 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            @else
-                                <tr>
-                                    <div class="alert alert-warning text-center col-md-8 mx-auto">
-                                        Empty
-                                    </div>
-                                </tr>
-                            @endif
                         </div>
 
                     </div>

@@ -31,6 +31,7 @@ class BlogController extends Controller
     }
     public function create(StoreBlogRequest $request)
     {
+//        dd($request->toArray());
         $request = $request->validated();
         if($request['image'])
         {
@@ -43,7 +44,7 @@ class BlogController extends Controller
         $blog    = Blog::create($request);
         if(isset($request['tags']))
         {
-          $blog->tags()->delete();
+         // $blog->tags()->delete();
           $tags =  explode(',',$request['tags']);
           foreach ($tags as $tag)
           {
@@ -67,13 +68,7 @@ class BlogController extends Controller
         $blog       = Blog::with('tags')->find($id);
         $categories = Category::all();
         $users      = User::all();
-        $tags       = [];
-        foreach ($blog->tags as $tag)
-        {
-            $tags[] = $tag->name;
-        }
-        $tags = json_encode($tags);
-        return view('admin.blogs.edit',compact('blog','users','tags','categories'));
+        return view('admin.blogs.edit',compact('blog'),compact('users'))->with(['categories'=>$categories]);
     }
     public function update(Request $request, $id)
     {
@@ -86,13 +81,12 @@ class BlogController extends Controller
             'image'=>'file|image',
             'tags'=>'nullable'
         ]);
-        if(!is_null($request['tags']))
+        if(!isNull($request['tags']))
         {
             $blog->tags()->delete();
-            $tags =  explode(',',$request['tags']);
-            foreach ($tags as $tag)
+            foreach ($request['tags'] as $tag)
             {
-                $blog->tags()->create(['name'=>_slug($tag)]);
+                $blog->tags()->create(['name'=>$tag]);
             }
         }
         $blog->title             = $request->input('title');

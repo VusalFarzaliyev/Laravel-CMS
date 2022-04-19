@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('publisher')->references('id')->on('users');
+            $table->foreignId('publisher')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('title');
             $table->string('seo_title')->nullable();

@@ -80,8 +80,6 @@ Route::group(['middleware'=>'notLogin'],function () {
             Route::get('/',[BlogController::class,'index'])->name('index')->middleware('permission:read-blogs');
             Route::get('/add',[BlogController::class,'add'])->name('add')->middleware('permission:create-blogs');
             Route::post('/create',[BlogController::class,'create'])->name('create')->middleware('permission:create-blogs');
-            Route::get('/tag_add/{id}',[BlogController::class,'TagAdd'])->name('tag_add');
-            Route::patch('/tag_create/{id}',[BlogController::class,'TagCreate'])->name('tag_create');
             Route::get('/edit/{id}',[BlogController::class,'edit'])->name('edit')->middleware('permission:edit-blogs');
             Route::post('/update/{id}',[BlogController::class,'update'])->name('update')->middleware('permission:edit-blogs');
             Route::get('/delete/{id}',[BlogController::class,'delete'])->name('delete')->middleware('permission:delete-blogs');
@@ -93,15 +91,15 @@ Route::group(['middleware'=>'notLogin'],function () {
                 Route::post('/checkDelete/',[BlogController::class,'checkDelete'])->name('checkDelete')->middleware('permission:multi-delete-galery');
             });
         });
-//        Route::group(['prefix'=>'/tags','as'=>'tag.'],function (){
-//            Route::get('/',[TagController::class,'index'])->name('index');
+        Route::group(['prefix'=>'/tags','as'=>'tag.'],function (){
+            Route::get('/',[TagController::class,'index'])->name('index');
+            Route::get('/show/{name}',[TagController::class,'show'])->name('show');
 //            Route::get('/create',[TagController::class,'create'])->name('create');
 //            Route::post('/store',[TagController::class,'store'])->name('store');
 //            Route::get('/edit/{id}',[TagController::class,'edit'])->name('edit');
-//            Route::get('/show',[TagController::class,'show'])->name('show');
 //            Route::put('/update/{id}',[TagController::class,'update'])->name('update');
 //            Route::get('/delete/{id}',[TagController::class,'delete'])->name('delete');
-//        });
+        });
         Route::group(['prefix'=>'/profile'],function ()
         {
             Route::get('/',[ProfileController::class,'edit']);

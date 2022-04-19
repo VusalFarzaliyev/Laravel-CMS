@@ -10,7 +10,6 @@
         </div>
     </div>
     </div>
-    <!-- /page header -->
     <div class="content">
         @if (session('danger'))
             <div class="alert alert-danger text-center col-md-6 mx-auto">
@@ -32,29 +31,20 @@
             <div class="col-xl-8 mx-auto">
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left">
-                                <a href="{{route('tag.create')}}" class="btn btn-warning ml-3"><i class="icon-add"></i> Add New</a>
-                            </div>
-                            <div class="float-right mr-5">
-                                <span >{{$tags->links()}}</span>
-                            </div>
                             <div class="table-responsive ">
                                 @if(count($tags)>0)
                                 <table class="table">
-                                    <thead class="text-center">
+                                    <thead>
                                     <tr class="table-border-solid">
-                                        <th>Name</th>
-                                        <th>Operation</th>
+                                        <th>Tag Name</th>
+                                        <th>Blogs</th>
                                     </tr>
                                     </thead>
-                                    <tbody class="text-center">
-                                    @foreach($tags as $tag)
-                                        <tr >
-                                            <td>{{$tag->name}}</td>
-                                            <td>
-                                                <a href="{{route('tag.edit',$tag->id)}}" class="list-icons-item text-primary"><i style="font-size: 25px" class="icon-pencil7"></i></a>
-                                                <a href="{{route('tag.delete',$tag->id)}}" class="list-icons-item ml-2 text-danger" onclick="return confirm('Are you sure want to delete this user?')"><i style="font-size: 25px" class="icon-trash"></i></a>
-                                            </td>
+                                    <tbody>
+                                    @foreach($tags as $key=>$tag)
+                                        <tr>
+                                            <td>{{$key}}</td>
+                                            <td><a href="{{route('tag.show',$key)}}">{{count($tag)}} <i class="icon-eye"></i></a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

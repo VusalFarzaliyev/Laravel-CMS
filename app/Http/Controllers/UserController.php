@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
-
+use App\Models\Blog;
 class UserController extends Controller
 {
     public function index()
@@ -97,6 +97,7 @@ class UserController extends Controller
         {
             return redirect()->back()->with('delete','Main User cannot be deleted');
         }
+        Blog::where('publisher',$user->id)->delete();
         $user->delete();
         return redirect('/dashboard/users/')->with('delete','User Deleted');
     }
